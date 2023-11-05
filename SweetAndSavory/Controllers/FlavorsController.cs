@@ -53,9 +53,9 @@ namespace SweetAndSavory.Controllers
         [HttpPost]
         public ActionResult AddTreat(Flavor flavor, int treatId)
         {
-    #nullable enable
+        #nullable enable
         FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
-    #nullable disable
+        #nullable disable
         if (joinEntity == null && treatId != 0)
         {
             _db.FlavorTreats.Add(new FlavorTreat() { TreatId = treatId, FlavorId = flavor.FlavorId });
