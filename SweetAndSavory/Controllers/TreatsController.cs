@@ -60,7 +60,7 @@ namespace SweetAndSavory.Controllers
         [HttpPost]
         public ActionResult Edit(Treat treat)
         {
-        _db.Items.Update(treat);
+        _db.Treats.Update(treat);
         _db.SaveChanges();
         return RedirectToAction("Index");
         }
@@ -75,7 +75,7 @@ namespace SweetAndSavory.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
         Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-        _db.Items.Remove(thisTreat);
+        _db.Treats.Remove(thisTreat);
         _db.SaveChanges();
         return RedirectToAction("Index");
         }

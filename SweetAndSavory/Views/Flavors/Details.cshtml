@@ -3,7 +3,7 @@
 }
 
 @using SweetAndSavory.Models
-@model SweetAndSavory.Models.Flavors
+@model SweetAndSavory.Models.Flavor
 
 <h2>Flavor Details</h2>
 <hr />
@@ -17,7 +17,7 @@ else
 {
   <h4>Treats the flavor belongs to:</h4>
   <ul>
-  @foreach (FlavorTreats join in Model.JoinEntities)
+  @foreach (FlavorTreat join in Model.JoinEntities)
     {
       <li>@join.Treat.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Flavors"))

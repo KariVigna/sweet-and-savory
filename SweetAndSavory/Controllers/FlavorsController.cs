@@ -45,7 +45,7 @@ namespace SweetAndSavory.Controllers
 
         public ActionResult AddTreat(int id)
         {
-        Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.TreatId == id);
+        Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
         ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
         return View(thisFlavor);
         }
@@ -56,7 +56,7 @@ namespace SweetAndSavory.Controllers
     #nullable enable
         FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
     #nullable disable
-        if (joinEntity == null && itemId != 0)
+        if (joinEntity == null && treatId != 0)
         {
             _db.FlavorTreats.Add(new FlavorTreat() { TreatId = treatId, FlavorId = flavor.FlavorId });
             _db.SaveChanges();
