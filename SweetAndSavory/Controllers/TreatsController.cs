@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using SweetAndSavory.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SweetAndSavory.Controllers
 {
+    [Authorize]
     public class TreatsController : Controller
     {
         private readonly SweetAndSavoryContext _db;
@@ -15,7 +17,6 @@ namespace SweetAndSavory.Controllers
         {
         _db = db;
         }
-
         public ActionResult Index()
         {
         List<Treat> model = _db.Treats.ToList();

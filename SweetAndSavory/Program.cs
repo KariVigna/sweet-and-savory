@@ -24,20 +24,19 @@ class Program
                         )
                     );
 
-    // builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    //             .AddEntityFrameworkStores<SweetAndSavoryContext>()
-    //             .AddDefaultTokenProviders();
+    builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<SweetAndSavoryContext>()
+                .AddDefaultTokenProviders();
 
-    // // This is where we can determine Password requirements for users.
-    // builder.Services.Configure<IdentityOptions>(options =>
-    // {
-    //     options.Password.RequireDigit = true;
-    //     options.Password.RequireLowercase = true;
-    //     options.Password.RequireNonAlphanumeric = true;
-    //     options.Password.RequireUppercase = true;
-    //     options.Password.RequiredLength = 6;
-    //     options.Password.RequiredUniqueChars = 1;
-    // });
+    builder.Services.Configure<IdentityOptions>(options =>
+    {
+        options.Password.RequireDigit = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireNonAlphanumeric = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequiredLength = 6;
+        options.Password.RequiredUniqueChars = 1;
+    });
 
     WebApplication app = builder.Build();
 
@@ -47,9 +46,8 @@ class Program
 
     app.UseRouting();
 
-    // Next two lines below enable authentication and authorization.
-    // app.UseAuthentication();
-    // app.UseAuthorization();
+    app.UseAuthentication();
+    app.UseAuthorization();
 
     app.MapControllerRoute(
         name: "default",
